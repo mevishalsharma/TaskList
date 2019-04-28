@@ -1,0 +1,50 @@
+﻿@model Core.Models.TaskListModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+
+<style type="text/css">
+    .checkbox {
+        width: 15px;
+    }
+</style>
+
+<div style="padding-top:10px;">
+    <h2>Add</h2>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TaskHead" class="control-label"></label>
+                <input asp-for="TaskHead" class="form-control" />
+                <span asp-validation-for="TaskHead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskDescription" class="control-label"></label>
+                <input asp-for="TaskDescription" class="form-control" />
+                <span asp-validation-for="TaskDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskChecked" class="control-label"></label>
+                <input type="checkbox"  asp-for="TaskChecked" class="form-control checkbox" />                  
+                <span asp-validation-for="TaskChecked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

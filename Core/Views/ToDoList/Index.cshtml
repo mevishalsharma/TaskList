@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Core.Models.TaskListModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style type="text/css">
+    .checkbox {
+        width: 15px;
+    }
+</style>
+<div style="padding-top:10px;">
+    <h2>Index</h2>
+
+</div>
+
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskChecked)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskChecked)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+               
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> |
+                @*<form asp-action="Delete">
+                    <input type="hidden" value="@item.ID" name="id" />
+                    <input type="submit" value="Delete" />
+                </form>*@
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
